@@ -32,6 +32,17 @@ public class Gun : MonoBehaviour
             if (target != null)
             {
                 target.TakeDamage(damage);
+                //if target has tag belong, execute gameover from game master script
+                if (target.tag == "belong")
+                {
+                    Debug.Log("oh no, wrong");
+                    FindObjectOfType<GameManager>().GameOver();
+                }
+                //if target has tag not_belong, player made correct choice
+                if (target.tag == "not_belong")
+                {
+                    Debug.Log("yeh. you can now sit and solve the puzzle");
+                }
             }
             //add force to the object that has been hit, but only if it has a rigidbody
             if (hit.rigidbody != null)
