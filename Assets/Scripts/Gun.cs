@@ -35,7 +35,6 @@ public class Gun : MonoBehaviour
                 //if target has tag belong, execute gameover from game master script
                 if (target.tag == "belong")
                 {
-                    Debug.Log("oh no, wrong");
                     FindObjectOfType<GameManager>().GameOver();
                 }
                 //if target has tag not_belong, player made correct choice

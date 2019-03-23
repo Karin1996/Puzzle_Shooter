@@ -2,8 +2,4 @@
 
 public class Gamemaster : MonoBehaviour
 {
-    void GameOver()
-    {
-
-    }
 }
