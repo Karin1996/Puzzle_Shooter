@@ -8,6 +8,7 @@ public class Gun : MonoBehaviour
     public Camera fpsCam;
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
+    public AudioSource shootsound;
 
     // Update is called once per frame
     void Update()
@@ -25,7 +26,6 @@ public class Gun : MonoBehaviour
         // we want to shoot forward starting from the camera and we want to info in the hit variable.The range is optional
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.name != "Player" ) //Not execute when accidently shooting yourself (looking down for example). Show no particles etc
         {
-            Debug.Log(hit.transform.name);
             //execute TakeDamage function from Target script
             Target target = hit.transform.GetComponent<Target>();
             //we only want to execute it if we actually found the component
@@ -53,6 +53,8 @@ public class Gun : MonoBehaviour
             //Show the impactEffect. Instiate it at the point of the hit and we want to rotate it on the hit surface (bounce of idea). Destroy the gameobject afterwards
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 2f);
+            //play shootaudio
+            shootsound.Play();
         }
     }
 }

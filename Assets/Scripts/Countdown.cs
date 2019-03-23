@@ -3,7 +3,7 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
-    public bool start = false;
+    public GameManager gm;
     private TextMeshPro time; //The time gameobject 
     float elapsed = 0f; // will go from 0 to 1 second
     private AudioSource alarm;
@@ -25,15 +25,13 @@ public class Countdown : MonoBehaviour
     void Update()
     {
         elapsed += Time.deltaTime; //The elapsed time
-        if (elapsed >= 1f && start == true)
+        if (elapsed >= 1f && gm.startTimer == true)
         {
             elapsed = elapsed % 1f; //back to zero
             int status = Timer(); //execute Timer()
             if (status == -1)
             {
-                // Timer is done.
-                // Do shit here.
-                time.text = "Done";
+                gm.GameOver();
             }
         }
     }
