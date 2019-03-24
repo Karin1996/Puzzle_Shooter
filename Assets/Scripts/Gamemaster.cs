@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     private bool dialogueFinished;
 
     public bool startTimer;
+    public bool startPuzzle;
 
     private void Start()
     {
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
         dialogueFinished = false;
         StartDialogue(dialogue);
         startTimer = false;
+        startPuzzle = false;
     }
 
     private void Update()
