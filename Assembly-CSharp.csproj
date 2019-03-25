@@ -60,7 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CursorVisibility.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -70,6 +69,7 @@
     <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
     <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
     <Compile Include="Assets\Scripts\Countdown.cs" />
+    <Compile Include="Assets\Scripts\CursorVisibility.cs" />
     <Compile Include="Assets\Scripts\Dialogue.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gamemaster.cs" />
