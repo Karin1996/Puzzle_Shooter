@@ -14,8 +14,8 @@ public class Countdown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minutes = 1;
-        seconds = 05;
+        minutes = 3;
+        seconds = 00;
 
         time = gameObject.GetComponent<TextMeshPro>();
         alarm = GetComponent<AudioSource>();
@@ -43,7 +43,8 @@ public class Countdown : MonoBehaviour
             return -1;
         }
 
-        if (minutes == 0 && seconds <= 30)
+        //When 20 seconds left start alarm and color time text red
+        if (minutes == 0 && seconds <= 20)
         {
             time.color = new Color32(255, 0, 0, 255); //Change the color
             alarm.Play();

@@ -8,6 +8,9 @@ TagManager:
   - belong
   - item
   - gun
+  - puzzle
+  - wall_puzzle
+  - block_img
   layers:
   - Default
   - TransparentFX

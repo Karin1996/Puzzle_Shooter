@@ -24,7 +24,7 @@ public class Gun : MonoBehaviour
         muzzleFlash.Play(); //Show particles
         RaycastHit hit;
         // we want to shoot forward starting from the camera and we want to info in the hit variable.The range is optional
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.name != "Player" ) //Not execute when accidently shooting yourself (looking down for example). Show no particles etc
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.name != "Player") //Not execute when accidently shooting yourself (looking down for example). Show no particles etc
         {
             //execute TakeDamage function from Target script
             Target target = hit.transform.GetComponent<Target>();
@@ -48,12 +48,19 @@ public class Gun : MonoBehaviour
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
-
-            //Show the impactEffect. Instiate it at the point of the hit and we want to rotate it on the hit surface (bounce of idea). Destroy the gameobject afterwards
-            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-            Destroy(impactGO, 2f);
-            //play shootaudio
-            shootsound.Play();
         }
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range) && hit.transform.tag == "wall_puzzle") //only execute when hitting wall puzzle
+        {
+            //Get the current hit block gameobject and find the parent to have access to the CheckPuzzle script attached to parent
+            CheckPuzzle colorBlock = GameObject.FindGameObjectWithTag("wall_puzzle").GetComponentInParent<CheckPuzzle>();
+            //Pass the name of the colorBlock as a string to the SaveColor method in CheckPuzzle Script
+            colorBlock.SaveColor(hit.transform.name.ToString());
+        }
+
+        //Show the impactEffect. Instiate it at the point of the hit and we want to rotate it on the hit surface (bounce of idea). Destroy the gameobject afterwards
+        GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+        Destroy(impactGO, 2f);
+        //play shootaudio
+        shootsound.Play();
     }
 }

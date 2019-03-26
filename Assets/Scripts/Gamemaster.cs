@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Canvas press;
     public Canvas iteminfo;
     public Canvas dialogueBox;
+    public Canvas puzzlePress;
 
     public TextMeshProUGUI dialogueText;
     private Queue sentences;
@@ -30,13 +31,14 @@ public class GameManager : MonoBehaviour
         DisableCanvas(press);
         DisableCanvas(iteminfo);
         DisableCanvas(hitbox);
+        DisableCanvas(puzzlePress);
 
         sentences = new Queue();
         dialogue = new Dialogue();
         dialogueFinished = false;
         StartDialogue(dialogue);
         startTimer = false;
-        startPuzzle = false;
+        startPuzzle = true;
     }
 
     private void Update()
