@@ -1,16 +1,17 @@
 Win64
 PlayerPath?
-C:/Users/Karin/Desktop/Puzzle_Shooter.exe
+C:/Users/Karin/Desktop/Into the Void.exe
 SceneListBegin?
 Assets/Scenes/Start.unity
 Assets/Scenes/Game.unity
 Assets/Scenes/GameOver.unity
+Assets/Scenes/Escaped.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LevelReset
 984dcc0ba3707b7691fbdca8ff508d28 Unity.TextMeshPro.dll:TMPro.TMP_SelectionCaret
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SceneAndURLLoader
 3748fbad2d474a315bda516b8363a0c5 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExtinguishableParticleSystem
-58ed57b08af59f2fd3d526c74daed70f Assembly-CSharp.dll:.GameManager
+ed13e5102d4e6c6b3f67b62f24c0f73d Assembly-CSharp.dll:.GameManager
 01aa15e337e3a9c62f15153dfac6d589 Unity.TextMeshPro.dll:TMPro.TMP_Dropdown
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 06f0fef534ca4c1d6064fd77a26bf722 UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -36,6 +37,7 @@ f00ca901b734f71f99db8f25241154c4 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 39a1af780851540205de944aa74817a6 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Car.SkidTrail
 8fc35be1fb4e4e68a240a35f242b4fcc Assembly-CSharp.dll:.Interact
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.PauseMenu
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.CursorVisibility
 718ef0ded913ba15da8a97ccf24793ce Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Aeroplane.AeroplaneUserControl4Axis
 d63aae503ada135df9e49dad6d9fb277 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.Hose
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -183,6 +185,7 @@ e08b7fd025e5743e5563e22fdd827075 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.FireLight
 8216ca00094987954bcf22fd5ccf9bfd Assembly-CSharp-firstpass.dll:UnityStandardAssets.Cameras.FreeLookCam
 2294ba4929e515b4b46046eff1f6b057 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Effects.ExplosionFireAndDebris
+73a99e4be58d29b1b312411d76645a41 Assembly-CSharp.dll:.Puzzle
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -243,6 +246,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 49dcb3939f87870ac10cf1f8fcdfb35e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.FollowTarget
 b13a5333dd41709166e9def25561d522 Assembly-CSharp.dll:.Gun
 74fdef42e5d1b91d250d09f9fc6f54da Assembly-CSharp-firstpass.dll:UnityStandardAssets._2D.Camera2DFollow
+5dc73ffdbc061f590b7f7a6bcde7eefa Assembly-CSharp.dll:.CheckPuzzle
 219ec6059796d8951d2adcd8505d0dc2 Assembly-CSharp-firstpass.dll:UnityStandardAssets.CrossPlatformInput.TouchPad
 61faedcd907718913efd3ec146822d0e Assembly-CSharp-firstpass.dll:UnityStandardAssets.Vehicles.Ball.Ball
 a8cd58c1680eb5251e5604e560cf89e9 Assembly-CSharp-firstpass.dll:UnityStandardAssets.Utility.TimedObjectDestructor

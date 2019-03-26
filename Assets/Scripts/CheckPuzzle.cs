@@ -34,13 +34,13 @@ public class CheckPuzzle : MonoBehaviour
             switch (colorname)
             {
                 case "red":
-                    canvasBlocks[colorPlace].color = new Color32(229, 85, 85, 100);
+                    canvasBlocks[colorPlace].color = new Color32(229, 85, 85, 200);
                     break;
                 case "blue":
-                    canvasBlocks[colorPlace].color = new Color32(40, 176, 255, 100);
+                    canvasBlocks[colorPlace].color = new Color32(40, 176, 255, 200);
                     break;
                 case "green":
-                    canvasBlocks[colorPlace].color = new Color32(94, 192, 103, 100);
+                    canvasBlocks[colorPlace].color = new Color32(94, 192, 103, 200);
                     break;
             }
             colorPlace++;
