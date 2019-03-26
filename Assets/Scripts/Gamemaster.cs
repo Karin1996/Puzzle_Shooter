@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         dialogueFinished = false;
         StartDialogue(dialogue);
         startTimer = false;
-        startPuzzle = true;
+        startPuzzle = false;
     }
 
     private void Update()
@@ -112,5 +112,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         SceneManager.LoadScene("GameOver");
+    }
+    public void GameWon()
+    {
+        SceneManager.LoadScene("Escaped");
     }
 }

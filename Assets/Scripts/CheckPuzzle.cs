@@ -7,6 +7,7 @@ using TMPro;
 public class CheckPuzzle : MonoBehaviour
 {
     public GameObject puzzle;
+    Puzzle puzzleScript;
     public Image[] canvasBlocks;
 
     int colorPlace = 0;
@@ -16,17 +17,8 @@ public class CheckPuzzle : MonoBehaviour
     void Start()
     {
         //get the puzzle script
-        Puzzle puzzleScript = puzzle.GetComponent<Puzzle>();
+        puzzleScript = puzzle.GetComponent<Puzzle>();
     }
-
-    void Update()
-    {
-      //read what block are hit by player (dont let them destroy)
-      //Save in playerSequence List (the first 5 shots)
-      //Compare playerSequence List with puzzle.sequence (the correct one)
-      //Win or lose
-    }
-
 
     public void SaveColor(string colorname)
     {
@@ -51,20 +43,34 @@ public class CheckPuzzle : MonoBehaviour
                     canvasBlocks[colorPlace].color = new Color32(94, 192, 103, 100);
                     break;
             }
-
-            /*foreach (string seq in playerSequence)
-            {
-                Debug.Log(seq);
-            }
-            Debug.Log("--------------------");*/
-            //the name of the canvas ++
             colorPlace++;
         }
-        //sequence is full. Execute compare function
-        else
+
+        if (playerSequence.Count == 5)
         {
-            Debug.Log("list full");
-            //CompareLists();
+            bool equal = CompareLists(puzzleScript.sequence, playerSequence);
+            if (equal)
+            {
+                FindObjectOfType<GameManager>().GameWon();
+            }
+            else
+            {
+                FindObjectOfType<GameManager>().GameOver();
+            }
         }
+
+    }
+
+    bool CompareLists (List<string> a, List<string> b)
+    {
+        for (int i = 0; i < a.Count; i++)
+        {
+            if (a[i] != b[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

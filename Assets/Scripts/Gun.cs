@@ -37,10 +37,10 @@ public class Gun : MonoBehaviour
                 {
                     FindObjectOfType<GameManager>().GameOver();
                 }
-                //if target has tag not_belong, player made correct choice
+                //if target has tag not_belong, player made correct choice and can now see the sequence of the colored lanterns
                 if (target.tag == "not_belong")
                 {
-                    Debug.Log("yeh. you can now sit and solve the puzzle");
+                    FindObjectOfType<GameManager>().startPuzzle = true;
                 }
             }
             //add force to the object that has been hit, but only if it has a rigidbody

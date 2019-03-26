@@ -24,21 +24,28 @@ public class Puzzle : MonoBehaviour
     {
         //default material colors
         redMaterial = red.GetComponent<Renderer>().material;
-        redMaterial.SetColor("_EmissionColor", new Color(0.1f, 0f, 0f));
-
         blueMaterial = blue.GetComponent<Renderer>().material;
-        blueMaterial.SetColor("_EmissionColor", new Color(0f, 0f, 0.1f));
-
         greenMaterial = green.GetComponent<Renderer>().material;
-        redMaterial.SetColor("_EmissionColor", new Color(0f, 0.1f, 0f));
+
+        // Reset the lanterns
+        ResetLanterns();
+
         //Generate a random sequence for the colors to show up
-        MakeSequence();
+        MakeSequence(5);
+        printSequence(sequence);
     }
 
-    void MakeSequence()
+    void printSequence(List<string> sequence) { 
+        foreach (string color in sequence)
+        {
+            Debug.Log(color);
+        }
+    }
+
+    void MakeSequence(int amount)
     {
         //we want a sequence of 5 colors 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < amount; i++)
         {
             //put random color from colors array in sequence list
             sequence.Add(colors[Random.Range(0, 3)]);
@@ -57,13 +64,11 @@ public class Puzzle : MonoBehaviour
                 if (shownSequence == false)
                 {
                     gm.EnableCanvas(gm.puzzlePress);
-                    //extra check
                     if (Input.GetKeyUp(KeyCode.Q) && shownSequence == false)
                     {
-                        Debug.Log("Showing sequence");
-                        ShowSequence();
                         gm.DisableCanvas(gm.puzzlePress);
                         shownSequence = true;
+                        StartCoroutine(ShowSequenceAsync(sequence, 0));
                     }
                 }
                 else
@@ -74,38 +79,37 @@ public class Puzzle : MonoBehaviour
         }
     }
 
-    void ShowSequence()
+    void ResetLanterns()
     {
-        foreach (string sequenceColor in sequence)
+        //first set all the colors to default material colors everytime
+        redMaterial.SetColor("_EmissionColor", new Color(0.1f, 0f, 0f));
+        blueMaterial.SetColor("_EmissionColor", new Color(0f, 0f, 0.1f));
+        greenMaterial.SetColor("_EmissionColor", new Color(0f, 0.1f, 0f));
+    }
+
+    IEnumerator ShowSequenceAsync (List<string> sequence, int position)
+    {
+        //Check what the colorname is of the current loop and then change color
+        switch (sequence[position])
         {
-            //first set all the colors to default material colors everytime
-            redMaterial = red.GetComponent<Renderer>().material;
-            redMaterial.SetColor("_EmissionColor", new Color(0.1f, 0f, 0f));
+            case "red":
+                redMaterial.SetColor("_EmissionColor", new Color(0.9f, 0.2f, 0.2f));
+                break;
+            case "blue":
+                blueMaterial.SetColor("_EmissionColor", new Color(0.2f, 0.2f, 0.9f));
+                break;
+            case "green":
+                greenMaterial.SetColor("_EmissionColor", new Color(0.2f, 0.9f, 0.2f));
+                break;
+        }
 
-            blueMaterial = blue.GetComponent<Renderer>().material;
-            blueMaterial.SetColor("_EmissionColor", new Color(0f, 0f, 0.1f));
+        yield return new WaitForSeconds(1);
+        ResetLanterns();
+        yield return new WaitForSeconds(0.5f);
 
-            greenMaterial = green.GetComponent<Renderer>().material;
-            redMaterial.SetColor("_EmissionColor", new Color(0f, 0.1f, 0f));
-
-            //Check what the colorname is of the current loop and then change color
-            switch (sequenceColor)
-            {
-                case "red":
-                    redMaterial = red.GetComponent<Renderer>().material;
-                    redMaterial.SetColor("_EmissionColor", new Color(0.9f, 0.2f, 0.2f));
-                    break;
-                case "blue":
-                    blueMaterial = blue.GetComponent<Renderer>().material;
-                    blueMaterial.SetColor("_EmissionColor", new Color(0.2f, 0.2f, 0.9f));
-                    break;
-                case "green":
-                    greenMaterial = green.GetComponent<Renderer>().material;
-                    greenMaterial.SetColor("_EmissionColor", new Color(0.2f, 0.9f, 0.2f));
-                    break;
-            }
-            //wait a few and start loop again
+        if ((position+1) != sequence.Count)
+        {
+            StartCoroutine(ShowSequenceAsync(sequence, ++position));
         }
     }
-    
 }
